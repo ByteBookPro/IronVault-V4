@@ -1,25 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "npm run build:prod",
-  "outputDirectory": "dist/public",
-  "installCommand": "npm install --legacy-peer-deps",
-  "framework": null,
-  "functions": {
-    "server/index.ts": {
-      "maxDuration": 30
-    }
-  },
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/server/index.ts"
-    },
-    {
-      "source": "/((?!api).*)",
-      "destination": "/dist/public/index.html"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+    { "source": "/api/(.*)", "destination": "/api/index" },
+    { "source": "/((?!api).*)", "destination": "/dist/public/index.html" }
+  ]
 }
