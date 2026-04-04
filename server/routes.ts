@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { randomBytes } from "crypto";
 import { z } from "zod";
+import stripeRouter from "./stripe-routes";
 
 // Admin Console backend URL for forwarding CRM data
 const ADMIN_CONSOLE_URL = process.env.ADMIN_CONSOLE_URL || 'http://localhost:3001';
@@ -62,6 +63,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok", message: "IronVault server is running" });
   });
+
+  // Stripe routes (checkout, portal, webhook)
+  app.use('/api/stripe', stripeRouter);
 
   // Extension API endpoints (requires authentication in production)
 
