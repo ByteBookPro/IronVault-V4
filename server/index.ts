@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
+import { registerRoutes } from "./routes.js";
 
 // Inline log — avoids statically importing vite (a devDependency) in production
 function log(message: string, source = "express") {

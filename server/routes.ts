@@ -1,9 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
+import { storage } from "./storage.js";
 import { randomBytes } from "crypto";
 import { z } from "zod";
-import stripeRouter from "./stripe-routes";
+import stripeRouter from "./stripe-routes.js";
 
 // Admin Console backend URL for forwarding CRM data
 const ADMIN_CONSOLE_URL = process.env.ADMIN_CONSOLE_URL || 'http://localhost:3001';
