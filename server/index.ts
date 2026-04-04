@@ -1,7 +1,17 @@
 import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+
+// Inline log — avoids statically importing vite (a devDependency) in production
+function log(message: string, source = "express") {
+  const formattedTime = new Date().toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+  console.log(`${formattedTime} [${source}] ${message}`);
+}
 
 const app = express();
 // Raw body required for Stripe webhook signature verification — must come before express.json()
@@ -51,11 +61,14 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 
 // importantly only setup vite in development and after
 // setting up all the other routes so the catch-all route
-// doesn't interfere with the other routes
+// doesn't interfere with the other routes.
+// vite.ts is dynamically imported to avoid loading vite (devDependency) in production.
 if (app.get("env") === "development") {
+  const { setupVite } = await import("./vite.js");
   await setupVite(app, server);
 } else if (process.env.VERCEL !== '1') {
   // On Vercel, static files are served by the CDN via vercel.json rewrites
+  const { serveStatic } = await import("./vite.js");
   serveStatic(app);
 }
 
