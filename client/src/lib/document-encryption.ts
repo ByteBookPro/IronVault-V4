@@ -195,7 +195,7 @@ export class DocumentEncryptionService {
     const keyData = this.base64ToArrayBuffer(document.encryptionKey);
     const key = await crypto.subtle.importKey(
       'raw',
-      keyData,
+      keyData as Uint8Array<ArrayBuffer>,
       { name: 'AES-GCM', length: 256 },
       true,
       ['encrypt', 'decrypt']
@@ -206,7 +206,7 @@ export class DocumentEncryptionService {
     const decryptedData = await CryptoService.decrypt(encryptedData, key, iv);
 
     // Create File object
-    const blob = new Blob([decryptedData], { type: this.getMimeType(document.type) });
+    const blob = new Blob([decryptedData as Uint8Array<ArrayBuffer>], { type: this.getMimeType(document.type) });
     return new File([blob], document.name, { type: this.getMimeType(document.type) });
   }
 

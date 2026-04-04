@@ -92,11 +92,11 @@ export async function decryptSecret(
     const plaintextBuffer = await crypto.subtle.decrypt(
       {
         name: 'AES-GCM',
-        iv: iv,
+        iv: iv as Uint8Array<ArrayBuffer>,
         tagLength: 128,
       },
       masterKey,
-      ciphertextBytes
+      ciphertextBytes as Uint8Array<ArrayBuffer>
     );
     
     // Convert bytes back to string
@@ -138,7 +138,7 @@ export async function deriveAutofillKey(
     const key = await crypto.subtle.deriveKey(
       {
         name: 'PBKDF2',
-        salt: salt,
+        salt: salt as Uint8Array<ArrayBuffer>,
         iterations: 600000, // OWASP recommended minimum
         hash: 'SHA-256',
       },

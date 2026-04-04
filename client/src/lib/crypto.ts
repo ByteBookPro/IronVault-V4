@@ -82,7 +82,7 @@ export class CryptoService {
     const key = await crypto.subtle.deriveKey(
       {
         name: 'PBKDF2',
-        salt: salt,
+        salt: salt as Uint8Array<ArrayBuffer>,
         iterations: config.iterations,
         hash: config.hash
       },
@@ -122,7 +122,7 @@ export class CryptoService {
     const key = await crypto.subtle.deriveKey(
       {
         name: 'PBKDF2',
-        salt: salt,
+        salt: salt as Uint8Array<ArrayBuffer>,
         iterations: config.iterations,
         hash: config.hash
       },
@@ -184,10 +184,10 @@ export class CryptoService {
       const encrypted = await crypto.subtle.encrypt(
         {
           name: 'AES-GCM',
-          iv: actualIV,
+          iv: actualIV as Uint8Array<ArrayBuffer>,
         },
         key,
-        dataBuffer
+        dataBuffer as Uint8Array<ArrayBuffer>
       );
 
       return { 
@@ -220,10 +220,10 @@ export class CryptoService {
       const decrypted = await crypto.subtle.decrypt(
         {
           name: 'AES-GCM',
-          iv: iv,
+          iv: iv as Uint8Array<ArrayBuffer>,
         },
         key,
-        encryptedData
+        encryptedData as Uint8Array<ArrayBuffer>
       );
 
       return new Uint8Array(decrypted);
