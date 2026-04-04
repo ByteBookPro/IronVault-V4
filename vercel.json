@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "installCommand": "npm install --legacy-peer-deps --include=dev",
+  "buildCommand": "npm run build:prod",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/index" },
     { "source": "/((?!api).*)", "destination": "/dist/public/index.html" }
