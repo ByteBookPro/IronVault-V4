@@ -54,7 +54,8 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 // doesn't interfere with the other routes
 if (app.get("env") === "development") {
   await setupVite(app, server);
-} else {
+} else if (process.env.VERCEL !== '1') {
+  // On Vercel, static files are served by the CDN via vercel.json rewrites
   serveStatic(app);
 }
 
