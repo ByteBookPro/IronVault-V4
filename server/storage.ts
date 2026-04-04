@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type CrmUser, type InsertCrmUser, type Entitlement, type InsertEntitlement, type BillingEvent, type InsertBillingEvent, crmUsers, entitlements, billingEvents } from "@shared/schema";
+import { type User, type InsertUser, type CrmUser, type InsertCrmUser, type Entitlement, type InsertEntitlement, type BillingEvent, type InsertBillingEvent, crmUsers, entitlements, billingEvents } from "../shared/schema.js";
 import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { eq } from "drizzle-orm";
