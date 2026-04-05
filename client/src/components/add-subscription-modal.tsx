@@ -315,7 +315,7 @@ export function AddSubscriptionModal({ open, onOpenChange, editingSubscription }
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent className="w-auto p-0 z-[200]" align="start">
                 <Calendar
                   mode="single"
                   selected={formData.nextBillingDate}
@@ -498,7 +498,7 @@ export function AddSubscriptionModal({ open, onOpenChange, editingSubscription }
                     {formData.expiryDate ? format(formData.expiryDate, "PPP") : "Select expiry date"}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
+                <PopoverContent className="w-auto p-0 z-[200]" align="start">
                   <Calendar
                     mode="single"
                     selected={formData.expiryDate}

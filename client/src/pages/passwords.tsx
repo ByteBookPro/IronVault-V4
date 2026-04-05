@@ -157,6 +157,7 @@ export default function Passwords() {
   };
 
   const handleDelete = async (id: string) => {
+    if (!window.confirm('Are you sure you want to delete this password? This action cannot be undone.')) return;
     try {
       await deletePassword(id);
       toast({
