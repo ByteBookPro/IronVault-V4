@@ -1,0 +1,53 @@
+APP NAME: IronVault – Password Manager
+
+SHORT DESCRIPTION (max 80 chars):
+Secure, offline-first password manager with military-grade encryption
+
+FULL DESCRIPTION (max 4000 chars):
+IronVault is a powerful, privacy-focused password manager designed for people who take security seriously. Built with a zero-knowledge architecture and AES-256 encryption, IronVault ensures that only you ever have access to your data — no one else, not even us.
+
+KEY FEATURES:
+
+Military-Grade Encryption
+Every item in your vault is protected with AES-256 encryption, the same standard used by governments and security agencies worldwide. Your master password never leaves your device — we use PBKDF2 key derivation to ensure your data stays yours.
+
+Zero-Knowledge Architecture
+We cannot read your passwords. We do not store your master password. Your encrypted vault data is the only thing we ever touch, and even that is unreadable without your key. True zero-knowledge means true privacy.
+
+Offline-First Design
+IronVault works completely without an internet connection. Your vault is always available, whether you're on a plane, in a tunnel, or simply in a dead zone. Sync is optional — not required.
+
+Complete Vault Management
+Store an unlimited number of passwords, secure notes, credit card details, and personal information. Organize items with categories and tags for quick access. Generate strong, unique passwords with our built-in password generator.
+
+Biometric Authentication
+Unlock your vault quickly and securely using Face ID, Touch ID, or your device's fingerprint scanner. Biometrics provide convenient access without sacrificing security.
+
+Cross-Platform Access
+IronVault is available on iOS, Android, and the web. Your vault goes wherever you go. All platforms share the same seamless experience with full feature parity.
+
+No Ads, No Tracking, No Compromises
+IronVault is completely free of advertisements and third-party trackers. We do not sell your data, analyze your usage, or share anything with anyone. Our business model is a simple subscription — you pay us, we protect your data.
+
+Password Generator
+Create strong, cryptographically random passwords with customizable length, character sets, and special character rules. Never reuse a weak password again.
+
+Secure Notes & Card Storage
+Keep confidential notes and credit card information alongside your passwords in the same encrypted vault. One secure place for all your sensitive data.
+
+Auto-Lock Protection
+IronVault automatically locks after a configurable timeout period. Even if someone picks up your device, they cannot access your vault without your master password or biometrics.
+
+Premium Subscription
+Unlock unlimited vault items, priority support, and advanced features with IronVault Premium. Start with a free trial — no credit card required.
+
+CATEGORY: Tools (or Productivity)
+CONTENT RATING: Everyone
+WEBSITE: https://www.ironvault.app
+PRIVACY POLICY URL: https://www.ironvault.app/privacy
+SUPPORT EMAIL: support@ironvault.app
+BUNDLE ID: com.ironvault.app
+GOOGLE PLAY APP ID: 4976037142715935580
+VERSION CODE: 1
+MIN SDK: Android 7.0 (API 24)
+TARGET SDK: Android 14 (API 34)
