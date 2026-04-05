@@ -286,11 +286,15 @@ export function MultiVaultAuthProvider({ children }: Props) {
       if (accessibleVaults.length === 1) {
         const vault = accessibleVaults[0];
         const storage = await vaultManager.unlockVault(vault.id, password);
-        
+
         setIsUnlocked(true);
         setActiveVault(vault);
         setMasterPassword(password);
-        
+
+        // Reset failed attempt counter on successful unlock
+        await vaultManager.resetFailedAttempts();
+        await updateLockoutState();
+
         return { success: true, matchingVaults: [vault] };
       }
       
@@ -333,11 +337,15 @@ export function MultiVaultAuthProvider({ children }: Props) {
       
       // Try to unlock
       const storage = await vaultManager.unlockVault(vaultId, password);
-      
+
       setIsUnlocked(true);
       setActiveVault(vaultInfo);
       setMasterPassword(password);
-      
+
+      // Reset failed attempt counter on successful unlock
+      await vaultManager.resetFailedAttempts();
+      await updateLockoutState();
+
       return true;
     } catch (error) {
       console.error('Unlock vault error:', error);

@@ -265,11 +265,15 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
     };
 
     await vaultStorage.savePassword(password);
-    // Update state directly instead of refreshing all data
+    // Update state directly for immediate UI response
     setPasswords(prev => [...prev, password]);
-    
+
     // Log the activity
     addLog('Add Password', 'password', `Added password for "${passwordData.name}"`);
+
+    // Re-sync from storage to ensure dashboard stats are consistent
+    // (guards against race where a concurrent refreshData read stale storage before this save)
+    await refreshData();
   };
 
   const updatePassword = async (id: string, updates: Partial<PasswordEntry>) => {

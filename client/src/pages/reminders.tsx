@@ -324,6 +324,7 @@ export default function Reminders() {
   };
 
   const handleDelete = async (reminder: ReminderEntry) => {
+    if (!window.confirm('Are you sure you want to delete this reminder? This action cannot be undone.')) return;
     try {
       await deleteReminder(reminder.id);
       toast({

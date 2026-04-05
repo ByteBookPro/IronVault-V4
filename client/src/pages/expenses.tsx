@@ -758,7 +758,7 @@ export default function Expenses() {
                   <div>
                     <p className="text-sm text-muted-foreground">Total Spent</p>
                     <p className="text-xl font-bold" data-testid="total-spent">
-                      {formatCurrency(analytics.totalAmount, 'USD')}
+                      {formatCurrency(analytics.totalAmount, currency)}
                     </p>
                   </div>
                   <DollarSign className="w-8 h-8 text-green-500" />
@@ -786,7 +786,7 @@ export default function Expenses() {
                   <div>
                     <p className="text-sm text-muted-foreground">Average Expense</p>
                     <p className="text-xl font-bold" data-testid="average-expense">
-                      {formatCurrency(analytics.averageExpense, 'USD')}
+                      {formatCurrency(analytics.averageExpense, currency)}
                     </p>
                   </div>
                   <BarChart3 className="w-8 h-8 text-purple-500" />
@@ -878,7 +878,7 @@ export default function Expenses() {
                           {item.percentage.toFixed(1)}%
                         </span>
                         <span className="font-bold">
-                          {formatCurrency(item.value, 'USD')}
+                          {formatCurrency(item.value, currency)}
                         </span>
                       </div>
                     </div>
@@ -908,8 +908,8 @@ export default function Expenses() {
                   <BarChart data={analytics.barChartData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="month" />
-                    <YAxis tickFormatter={(value) => formatCurrency(value, 'USD')} />
-                    <Tooltip formatter={(value) => formatCurrency(Number(value), 'USD')} />
+                    <YAxis tickFormatter={(value) => formatCurrency(value, currency)} />
+                    <Tooltip formatter={(value) => formatCurrency(Number(value), currency)} />
                     <Bar dataKey="amount" fill="#6366f1" />
                   </BarChart>
                 </ResponsiveContainer>
