@@ -17,7 +17,6 @@ jobs:
     name: Android AAB
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.platform != 'ios' }}
-    environment: production
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,7 +26,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
       - uses: android-actions/setup-android@v3
       - run: npm ci --legacy-peer-deps
       - run: npm run build:prod
