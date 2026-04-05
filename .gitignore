@@ -28,6 +28,8 @@ android/build/
 android/app/build/
 *.keystore
 *.jks
+android/app/keystore/*.keystore
+android/app/keystore/*.jks
 *.p8
 *.p12
 *.cer

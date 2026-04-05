@@ -1,0 +1,36 @@
+name: Build iOS
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --legacy-peer-deps
+      - run: npm run build
+        env:
+          NODE_ENV: production
+      - run: npx cap sync ios
+      - name: Install CocoaPods
+        run: cd ios/App && pod install
+      - name: Build iOS (unsigned)
+        run: |
+          xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -archivePath ios/App/App.xcarchive \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ironvault-ios.xcarchive
+          path: ios/App/App.xcarchive

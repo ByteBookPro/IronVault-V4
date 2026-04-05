@@ -1,44 +1,27 @@
-import type { CapacitorConfig } from '@capacitor/cli';
-
-const isDev = process.env.CAPACITOR_SERVER_URL !== undefined;
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.ironvault.app',
   appName: 'IronVault',
   webDir: 'dist/public',
-  ios: {
-    contentInset: 'automatic',
-    allowsLinkPreview: false,
-    scrollEnabled: true,
-    limitsNavigationsToAppBoundDomains: false,
-    preferredContentMode: 'mobile',
-  },
-  android: {
-    allowMixedContent: false,
-  },
-  server: isDev ? {
-    url: process.env.CAPACITOR_SERVER_URL,
-    cleartext: false,
-    iosScheme: 'capacitor',
-    androidScheme: 'https',
-  } : {
-    iosScheme: 'capacitor',
-    androidScheme: 'https',
-    cleartext: false,
-    hostname: 'localhost',
+  server: {
+    androidScheme: 'https'
   },
   plugins: {
+    SplashScreen: {
+      launchShowDuration: 2000,
+      backgroundColor: '#0d0d0d',
+      androidSplashResourceName: 'splash',
+      androidScaleType: 'CENTER_CROP',
+      showSpinner: false,
+    },
+    StatusBar: {
+      style: 'Dark',
+      backgroundColor: '#0d0d0d',
+    },
     Keyboard: {
-      resize: 'native',
-      resizeOnFullScreen: true,
+      resize: 'body',
       style: 'dark',
-    },
-    LocalNotifications: {
-      smallIcon: 'ic_stat_icon_config_sample',
-      iconColor: '#4F46E5',
-    },
-    Preferences: {
-      group: 'NativeStorage',
     },
   },
 };
